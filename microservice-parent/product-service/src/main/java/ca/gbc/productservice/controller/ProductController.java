@@ -1,9 +1,8 @@
 package ca.gbc.productservice.controller;
 
-
+import ca.gbc.productservice.service.ProductServiceImpl;
 import ca.gbc.productservice.dto.ProductRequest;
 import ca.gbc.productservice.dto.ProductResponse;
-import ca.gbc.productservice.service.ProductServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -12,17 +11,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/api/product")
 @RequiredArgsConstructor
 public class ProductController {
-    private final ProductServiceImpl productService;
 
+    private final ProductServiceImpl productService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-
     public void createProduct(@RequestBody ProductRequest productRequest) {
         productService.createProduct(productRequest);
     }
@@ -33,7 +30,6 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    // http://localhost:8080/api/product/1
     @PutMapping("/{productId}")
     public ResponseEntity<?> updateProduct(@PathVariable("productId") String productId,
                                            @RequestBody ProductRequest productRequest) {
@@ -50,4 +46,6 @@ public class ProductController {
         productService.deleteProduct(productId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
 }

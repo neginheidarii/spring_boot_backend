@@ -9,10 +9,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
-//import query
-import org.springframework.data.mongodb.core.query.Query;
+
 import java.util.List;
 
 // @Service annotation is used to mark the class as a service provider
@@ -51,12 +51,10 @@ public class ProductServiceImpl implements ProductService {
         query.addCriteria(Criteria.where("id").is(productId));
         Product product = mongoTemplate.findOne(query, Product.class);
 
-        if(product!=null) {
+        if (product != null) {
             product.setName(productRequest.getName());
             product.setDescription(productRequest.getDescription());
             product.setPrice(productRequest.getPrice());
-
-            // save the product to the database
 
             // log the product
             log.info("Product {} is updated", product.getId());
@@ -64,7 +62,6 @@ public class ProductServiceImpl implements ProductService {
 
         }
         return productId.toString();
-
 
 
     }
@@ -86,7 +83,7 @@ public class ProductServiceImpl implements ProductService {
     // mapToProductResponse method
     private ProductResponse mapToProductResponse(Product product) {
         return ProductResponse.builder()
-                .Id(product.getId())
+                .id(product.getId())
                 .name(product.getName())
                 .description(product.getDescription())
                 .price(product.getPrice())
