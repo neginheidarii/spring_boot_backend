@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "b83206db-9fdc-4c66-aa4e-d7c9f01bcd97",
+		"name": "API-Gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29886843",
+		"_collection_link": "https://restless-escape-162142.postman.co/workspace/WebDevJava~cec5f4dc-b199-4a93-a4c1-916606e2faba/collection/29886843-b83206db-9fdc-4c66-aa4e-d7c9f01bcd97?action=share&source=collection_link&creator=29886843"
+	},
+	"item": [
+		{
+			"name": "Place Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderLineItemDtoList\" : [\r\n        {\r\n            \"skuCode\" : \"sku_12345\",\r\n            \"price\" : 200,\r\n            \"quantity\" : 1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get product Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8181/api/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create product Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Apple iPad 2023\",\r\n    \"description\": \"The new Apple iPad.\",\r\n    \"price\": \"999.99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/api/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update product Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Apple iPad 2023\",\r\n    \"description\": \"The new Apple iPad.\",\r\n    \"price\": \"1999.99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8084/api/product/65585ade6adef129fc136d5b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"api",
+						"product",
+						"65585ade6adef129fc136d5b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete product Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8084/api/product/65585ade6adef129fc136d5b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"api",
+						"product",
+						"65585ade6adef129fc136d5b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "discovery-service",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8181/eureka/web",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"eureka",
+						"web"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
