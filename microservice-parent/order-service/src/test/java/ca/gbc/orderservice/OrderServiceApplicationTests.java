@@ -8,13 +8,14 @@ import ca.gbc.orderservice.repository.OrderRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
+import org.junit.Rule;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
+
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -24,8 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.springframework.http.MediaType;
 
 
 @SpringBootTest
@@ -82,13 +84,13 @@ class OrderServiceApplicationTests extends AbstractContainerBaseTest {
     @Test
     void placeOrder() throws Exception {
 
-        InventoryResponse inventoryResponse =
+        InventoryResponse  inventoryResponse =
                 new InventoryResponse(TEST_SKU_CODE, true);
 
         mockWebServer.enqueue(
-                new MockResponse()
-                        .setBody(objectMapper.writeValueAsString(List.of(inventoryResponse)))
-                        .setHeader("Content-Type", "application/json")
+               new MockResponse()
+                       .setBody(objectMapper.writeValueAsString(List.of(inventoryResponse)))
+                       .setHeader("Content-Type", "application/json")
         );
 
 
@@ -108,5 +110,6 @@ class OrderServiceApplicationTests extends AbstractContainerBaseTest {
         assertEquals(TEST_SKU_CODE, returnedSkuCode);
 
     }
+
 
 }

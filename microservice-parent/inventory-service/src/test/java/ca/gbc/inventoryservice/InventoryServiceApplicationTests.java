@@ -22,51 +22,51 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @AutoConfigureMockMvc
 class InventoryServiceApplicationTests extends AbstractContainerBaseTest {
 
-	@Autowired
-	private MockMvc mockMvc;
+    @Autowired
+    private MockMvc mockMvc;
 
-	@Autowired
-	private ObjectMapper objectMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
-	@Autowired
-	private InventoryRepository inventoryRepository;
+    @Autowired
+    private InventoryRepository inventoryRepository;
 
 
-	private List<Inventory> getInventoryList() {
-		List<Inventory> inventoryList = new ArrayList<>();
-		Inventory inventory = Inventory.builder()
-				.skuCode("IPAD2023")
-				.quantity(10)
-				.build();
+    private List<Inventory> getInventoryList() {
+        List<Inventory> inventoryList = new ArrayList<>();
+        Inventory inventory = Inventory.builder()
+                .skuCode("IPAD2023")
+                .quantity(10)
+                .build();
 
-		inventoryList.add(inventory);
-		return inventoryList;
-	}
+        inventoryList.add(inventory);
+        return inventoryList;
+    }
 
-	@Test
-	void isInStock() throws Exception {
+    @Test
+    void isInStock() throws Exception {
 
-		List<Inventory> inventoryList = getInventoryList();
-		inventoryRepository.saveAll(inventoryList);
+        List<Inventory> inventoryList = getInventoryList();
+        inventoryRepository.saveAll(inventoryList);
 
-		List<InventoryRequest> inventoryRequestList = new ArrayList<>();
-		InventoryRequest inventoryRequest = InventoryRequest.builder()
-				.skuCode("IPAD2023")
-				.quantity(10)
-				.build();
+        List<InventoryRequest> inventoryRequestList = new ArrayList<>();
+        InventoryRequest inventoryRequest = InventoryRequest.builder()
+                .skuCode("IPAD2023")
+                .quantity(10)
+                .build();
 
-		inventoryRequestList.add(inventoryRequest);
+        inventoryRequestList.add(inventoryRequest);
 
-		String inventoryRequestJson = objectMapper.writeValueAsString(inventoryRequestList);
+        String inventoryRequestJson = objectMapper.writeValueAsString(inventoryRequestList);
 
-		mockMvc.perform(MockMvcRequestBuilders.post("/api/inventory")
-						.contentType(MediaType.APPLICATION_JSON)
-						.content(inventoryRequestJson))
-				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(MockMvcResultMatchers.jsonPath("$[0].skuCode").value("IPAD2023"))
-				.andExpect(MockMvcResultMatchers.jsonPath("$[0].sufficientStock").value(true));
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/inventory")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(inventoryRequestJson))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].skuCode").value("IPAD2023"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].sufficientStock").value(true));
 
-		assertEquals(10, (int) inventoryRepository.findBySkuCode("IPAD2023").get().getQuantity());
+        assertEquals(10, (int) inventoryRepository.findBySkuCode("IPAD2023").get().getQuantity());
 
-	}
+    }
 }

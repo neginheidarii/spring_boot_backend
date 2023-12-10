@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "2c0bab25-8e7d-473d-8ca5-4036ffa61252",
+		"name": "product-services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29886843",
+		"_collection_link": "https://restless-escape-162142.postman.co/workspace/cec5f4dc-b199-4a93-a4c1-916606e2faba/collection/29886843-2c0bab25-8e7d-473d-8ca5-4036ffa61252?action=share&source=collection_link&creator=29886843"
+	},
+	"item": [
+		{
+			"name": "get product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8008/api/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Apple iPad 2023\",\r\n    \"description\": \"The new Apple iPad.\",\r\n    \"price\": \"999.99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8008/api/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Apple iPad 2023\",\r\n    \"description\": \"The new Apple iPad.\",\r\n    \"price\": \"1999.99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8008/api/product/650aeed2cd9fd66ecc36ba21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"product",
+						"650aeed2cd9fd66ecc36ba21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8008/api/product/650aeed2cd9fd66ecc36ba21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8008",
+					"path": [
+						"api",
+						"product",
+						"650aeed2cd9fd66ecc36ba21"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

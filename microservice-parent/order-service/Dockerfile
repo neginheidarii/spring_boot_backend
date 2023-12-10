@@ -37,7 +37,7 @@ ENV POSTGRES_USER=admin \
 
 # Expose the port where the application will be listening on
 # Expose does not make the ports of the container accessible to the host.
-EXPOSE 8083
+EXPOSE 8082
 
 # Execute the following 1 command when the container is starts
 

@@ -23,7 +23,7 @@ RUN gradle build -x test
 #package stage
 #---------------
 #base image
-FROM openjdk:17-alpine
+FROM openjdk:17-jdk-alpine
 
 # Create directory within the container - NOT the host machine
 # for RUN command, the command only apply to images
@@ -37,4 +37,5 @@ COPY --from=builder /home/gradle/src/build/libs/*.jar /app/api-gateway.jar
 EXPOSE 8181
 
 # Execute the following 1 command when the container is starts
+# CMD ["java","-jar","/app/discovery-service.jar"]
 ENTRYPOINT ["java","-jar","/app/api-gateway.jar"]
