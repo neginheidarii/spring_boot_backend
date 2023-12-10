@@ -4,5 +4,5 @@ import ca.gbc.orderservice.dto.OrderRequest;
 
 public interface OrderService {
 
-    String placeOrder(OrderRequest orderRequest);
+    void placeOrder(OrderRequest orderRequest);
 }

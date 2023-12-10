@@ -5,31 +5,20 @@ import ca.gbc.inventoryservice.dto.InventoryResponse;
 import ca.gbc.inventoryservice.model.Inventory;
 import ca.gbc.inventoryservice.repository.InventoryRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class InventoryServiceImpl implements InventoryService {
-
 
     private final InventoryRepository inventoryRepository;
 
     @Override
     @Transactional(readOnly = true)
-    @SneakyThrows
     public List<InventoryResponse> isInStock(List<InventoryRequest> requests) {
-
-        log.info("Wait Started");
-//        Thread.sleep(10000);
-        log.info("Wait Ended");
-
 
         List<Inventory> availableInventory = inventoryRepository.findAllByInventoryRequests(requests);
 
